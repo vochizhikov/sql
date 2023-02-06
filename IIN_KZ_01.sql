@@ -47,10 +47,9 @@ begin
          loop 
           CheckDigit:= CheckDigit + ((n-9)*to_number(substr(iin,n,1)));
          end loop;
-    else 
-        CheckDigit := mod(CheckDigit,11);
     end if; 
   
+    CheckDigit := mod(CheckDigit,11);
     iin := Concat(iin, to_char(CheckDigit)); -- IIN || TO_CHAR(CHECKDIGIT)  
 dbms_output.put_line('Консультант ' || numCons);
 dbms_output.put_line('ИИН ' || iin);
