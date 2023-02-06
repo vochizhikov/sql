@@ -51,17 +51,11 @@ begin
         CheckDigit := mod(CheckDigit,11);
     end if; 
   
-    iin := Concat(iin, to_char(CheckDigit)); -- IIN || TO_CHAR(CHECKDIGIT)
-    if  length(iin) = 12 then
-        goto M1;
-    else    
+    iin := Concat(iin, to_char(CheckDigit)); -- IIN || TO_CHAR(CHECKDIGIT)  
 dbms_output.put_line('Консультант ' || numCons);
 dbms_output.put_line('ИИН ' || iin);
 dbms_output.put_line(' ');
 dbms_output.put_line('https://ru.wikipedia.org/wiki/Индивидуальный_идентификационный_номер');
-
-
-    end if;
 
 end;
    
