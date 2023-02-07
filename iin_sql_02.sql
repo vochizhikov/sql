@@ -4,7 +4,7 @@ declare
    rnd     string(4);  
    vGender string(2); 
    CheckDigit number:= 0;
-begin
+begin  
   <<M1>>
 --1-6 разряд дата рождения ymmdd     
    select yymmdd 
@@ -47,14 +47,21 @@ begin
          loop 
           CheckDigit:= CheckDigit + ((n-9)*to_number(substr(iin,n,1)));
          end loop;
-    end if; 
+   end if; 
+
+   CheckDigit := mod(CheckDigit,11);
   
-    CheckDigit := mod(CheckDigit,11);
-    iin := Concat(iin, to_char(CheckDigit)); -- IIN || TO_CHAR(CHECKDIGIT)  
+    iin := Concat(iin, to_char(CheckDigit)); -- IIN || TO_CHAR(CHECKDIGIT)
+    if  length(iin) = 12 then
+        goto M1;
+    else    
 dbms_output.put_line('Консультант ' || numCons);
 dbms_output.put_line('ИИН ' || iin);
 dbms_output.put_line(' ');
 dbms_output.put_line('https://ru.wikipedia.org/wiki/Индивидуальный_идентификационный_номер');
+
+
+    end if;
 
 end;
    
